@@ -47,10 +47,14 @@ class Environment():
                         del agent
                     else:
                         temp_agents.append(agent)
-                        temp_new_agents = agent.procreate(dt, self.animal_agents)
+                        temp_new_agents = agent.procreate(self.animal_agents, dt)
                         if len(temp_new_agents) > 0:
                             temp_agents.extend(temp_new_agents)
                 else:
+                    ###########################################
+                    temp_agents.append(agent)
+                    # told to add this by classmate because it wasnt adding predetor
+                    ############################################
                     caught_prey = agent.hunt(self.animal_agents)
                     if caught_prey:
                         temp_hunted_agents.append(caught_prey)
@@ -83,7 +87,7 @@ class Environment():
                         del agent
                     else:
                         temp_agents.append(agent)
-                        temp_new_agents = agent.procreate(dt, self.animal_agents)
+                        temp_new_agents = agent.procreate(self.animal_agents, dt)
                         if len(temp_new_agents) > 0:
                             temp_agents.extend(temp_new_agents)
                 elif agent.ptype == "Predator":
